@@ -17,8 +17,9 @@ This document contains the estimation for the practicing with NextJS.
 
 # DEVELOPER TOOLS
 
-- [TypeScript](https://www.typescriptlang.org/): TypeScript is an open-source language which builds on JavaScript, one of the world's most used tools, by adding static type definitions.
-- [Husky](https://typicode.github.io/): Husky improves your commits and more! You can use it to lint your commit messages, run tests, lint code, etc... when you commit or push. Husky supports all Git hooks.
+- [Husky](https://typicode.github.io/)
+- [node v18.18.2+](https://nodejs.org/en/download/package-manager)
+- [pnpm 9.1.2+](https://pnpm.io/installation)
 
 # EDITOR
 
@@ -34,38 +35,37 @@ Apply NextJS 14’ features
 
 - Rendering
 
-    + Server component
+  - Server component
 
-    + Client component
+  - Client component
 
 - Catching
 
-    + Client side
+  - Client side
 
-    + Server side
+  - Server side
 
 - Optimizing
 
-    + Images
+  - Images
 
-    + Fonts
+  - Fonts
 
-    + Metadata
+  - Metadata
 
-    + Lazy Loading
+  - Lazy Loading
 
-    + Static Assets
+  - Static Assets
 
 - Component
 
-    + Font
+  - Font
 
-    + Image
+  - Image
 
-    + Link
+  - Link
 
 - File Conventions
-
 
 # GETTING STARTED
 
@@ -93,10 +93,16 @@ Apply NextJS 14’ features
     pnpm install
 ```
 
-- Run app
+- Run app in development environment
 
 ```bash
     pnpm dev
+```
+
+- Run app in production environment
+
+```bash
+    pnpm start
 ```
 
 - Create .env file at root project
