@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NEXTJS PRACTICE ONE
 
-## Getting Started
+# OVERVIEW
 
-First, run the development server:
+This document contains the estimation for the practicing with NextJS.
+
+# TIMELINE
+
+- Estimate time: 8 days (05/29/2024 - 06/09/2024)
+- Actual days:
+
+# TECHNICAL STACK
+
+- [React](https://react.dev/): React is the library for web and native user interfaces
+- [NextJS](https://nextjs.org/): React The library for web and native user interfaces
+- [TailwindCSS](https://tailwindcss.com/): a utility-first CSS framework for rapidly building modern websites
+
+# DEVELOPER TOOLS
+
+- [TypeScript](https://www.typescriptlang.org/): TypeScript is an open-source language which builds on JavaScript, one of the world's most used tools, by adding static type definitions.
+- [Husky](https://typicode.github.io/): Husky improves your commits and more! You can use it to lint your commit messages, run tests, lint code, etc... when you commit or push. Husky supports all Git hooks.
+
+# EDITOR
+
+[Visual studio code](https://code.visualstudio.com/)
+
+# TARGET
+
+Apply NextJS 14’ features
+
+- App router
+
+- Data fetching
+
+- Rendering
+
+    + Server component
+
+    + Client component
+
+- Catching
+
+    + Client side
+
+    + Server side
+
+- Optimizing
+
+    + Images
+
+    + Fonts
+
+    + Metadata
+
+    + Lazy Loading
+
+    + Static Assets
+
+- Component
+
+    + Font
+
+    + Image
+
+    + Link
+
+- File Conventions
+
+
+# GETTING STARTED
+
+- Clone repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    git clone git@gitlab.asoft-python.com:hoan.hoang/nextjs-training.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Checkout to the branch
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    git checkout practice-one
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Cd to the folder
 
-## Learn More
+```bash
+    cd stablo
+```
 
-To learn more about Next.js, take a look at the following resources:
+- Install the packages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+    pnpm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Run app
 
-## Deploy on Vercel
+```bash
+    pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Create .env file at root project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+   Please contact me to get ENV
+```
