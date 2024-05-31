@@ -1,18 +1,20 @@
+// Components
+import AuthorCard from '@/components/AuthorCard';
 import PostList from '@/components/PostList';
 
-export default function Home() {
-  // TODO: Replace by call APIs
-  const MOCK_DATA = Array.from({ length: 20 }, (_, index) => ({
-    image:
-      'https://images.unsplash.com/photo-1714498988410-8ff6397ca441?q=80&w=2969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: `Architectural Engineering Wonders of the modern era for your Inspiration ${index + 1}`,
-    category: ['CATEGORY'],
-    authorName: `Mario Sanchez ${index + 1}`,
-    authorImage:
-      'https://images.unsplash.com/photo-1714498988410-8ff6397ca441?q=80&w=2969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    createdDay: 'October 21, 2022',
-  }));
+// TODO: Replace by call APIs
+export const MOCK_DATA = Array.from({ length: 20 }, (_, index) => ({
+  image:
+    'https://images.unsplash.com/photo-1714498988410-8ff6397ca441?q=80&w=2969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  title: `Architectural Engineering Wonders of the modern era for your Inspiration ${index + 1}`,
+  category: ['CATEGORY'],
+  authorName: `Mario Sanchez ${index + 1}`,
+  authorImage:
+    'https://images.unsplash.com/photo-1714498988410-8ff6397ca441?q=80&w=2969&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  createdDay: 'October 21, 2022',
+}));
 
+export default function Home() {
   const renderPostCards = (start: number, end?: number) => (
     <PostList postList={MOCK_DATA.slice(start, end)} />
   );
@@ -25,6 +27,12 @@ export default function Home() {
       <div className="grid gap-10 mt-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
         {renderPostCards(2)}
       </div>
+      {/* TODO: This is for test will remove soon */}
+      <AuthorCard
+        name="Mario Sanchez"
+        avatar="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        bio="Mario is a Staff Engineer specialising in Frontend at Vercel, as well as being a co-founder of Acme and the content management system Sanity. Prior to this, he was a Senior Engineer at Apple."
+      />
     </main>
   );
 }
