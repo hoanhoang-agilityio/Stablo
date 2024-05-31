@@ -1,5 +1,5 @@
 // COnstants
-import { MOCK_DATA } from '@/app/page';
+import { MOCK_DATA } from '@/constants';
 
 // Components
 import AuthorCard from '@/components/AuthorCard';
