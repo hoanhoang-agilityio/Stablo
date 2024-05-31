@@ -13,6 +13,7 @@ const PostImage = ({ src, alt }: PostImageProps) => (
           src={src}
           alt={alt}
           fill
+          priority
           className="object-cover transition-all"
           sizes="(max-width: 768px) 30vw, 33vw"
         />
