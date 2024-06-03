@@ -47,3 +47,19 @@ export const getPostDetail = async (title: string) => {
 
   return res.json();
 };
+
+export const getPostByCategory = async (category: string) => {
+  const res = await fetch(
+    `https://kabar-server.onrender.com/posts?category=${category}`,
+    { cache: 'no-store' },
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+};
