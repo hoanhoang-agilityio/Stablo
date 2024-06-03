@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ROUTER } from '@/constants';
 
 // Utils
-import { formatToLocalizedDate } from '@/utils';
+import { convertSpaceToUnderScore, formatToLocalizedDate } from '@/utils';
 
 interface PostAuthorProps {
   authorName: string;
@@ -28,7 +28,7 @@ const PostAuthor = ({
         sizes="(max-width: 320px) 100vw, 320px"
       />
     </div>
-    <Link href={`${ROUTER.AUTHOR}/${authorName}`}>
+    <Link href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(authorName)}`}>
       <p className="truncate text-sm">{authorName}</p>
     </Link>
 

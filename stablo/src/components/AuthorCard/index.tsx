@@ -2,6 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
+// utils
+import { convertSpaceToUnderScore } from '@/utils';
+
 // Constants
 import { ROUTER } from '@/constants/router';
 
@@ -52,7 +55,7 @@ const AuthorCard = ({ name, avatar, bio, isDetail }: Author) => (
           <div className="mt-3">
             <Link
               className={'py-2 text-sm text-blue-600 rounded-full'}
-              href={`${ROUTER.AUTHOR}/${name}`}
+              href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(name)}`}
             >
               View Profile
             </Link>
