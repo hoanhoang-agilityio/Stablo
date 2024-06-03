@@ -7,3 +7,8 @@ export const convertSpaceToUnderScore = (text = '') => {
 export const convertUnderScoreTextToSpace = (text = '') => {
   return text?.replace(/_/g, ' ');
 };
+
+// Capitalizes the first letter of a given text
+export const upperCaseFirstLetter = (text = '') => {
+  return text.trimEnd().charAt(0).toUpperCase() + text.slice(1);
+};
