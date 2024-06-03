@@ -37,7 +37,7 @@ const NAVIGATION_ITEMS: LinkWithIconProps[] = [
     title: 'Author',
   },
   {
-    url: ROUTER.POST,
+    url: ROUTER.POSTS,
     text: 'Post',
     title: 'Post',
   },

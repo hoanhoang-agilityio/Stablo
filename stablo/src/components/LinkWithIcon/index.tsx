@@ -21,7 +21,7 @@ export const LinkWithIcon = ({
     href={url}
     title={title || text}
     className={twMerge(
-      'text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400',
+      'text-sm font-medium text-gray-600 hover:text-blue-500',
       additionalClass,
     )}
   >
