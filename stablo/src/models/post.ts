@@ -1,4 +1,4 @@
-export interface PostType {
+export interface Post {
   image: string;
   title: string;
   category: string[];

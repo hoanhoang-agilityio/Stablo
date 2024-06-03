@@ -1,5 +1,5 @@
 // Models
-import { PostType } from '@/models/post';
+import { Post } from '@/models/post';
 
 // Components
 import PostImage from './PostImage';
@@ -13,7 +13,7 @@ const PostCard = ({
   authorName,
   authorImage,
   createdDay,
-}: PostType) => (
+}: Post) => (
   <div className="group cursor-pointer">
     <PostImage src={image} alt={title} />
     <PostContent title={title} category={category} />
