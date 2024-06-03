@@ -1,24 +1,29 @@
 // Models
-import { PostType } from '@/models/post';
+import { Post } from '@/models/post';
 
 // Component
 import PostCard from '../PostCard';
 
 interface PostListProps {
-  postList: PostType[];
+  postList: Post[];
 }
 
 const PostList = ({ postList }: PostListProps) =>
-  postList.map((post, index) => (
-    <PostCard
-      key={index}
-      image={post.image}
-      title={post.title}
-      category={post.category}
-      authorName={post.authorName}
-      authorImage={post.authorImage}
-      createdDay={post.createdDay}
-    />
-  ));
+  postList.map(
+    (
+      { image, title, category, authorName, authorImage, createdDay },
+      index,
+    ) => (
+      <PostCard
+        key={index}
+        image={image}
+        title={title}
+        category={category}
+        authorName={authorName}
+        authorImage={authorImage}
+        createdDay={createdDay}
+      />
+    ),
+  );
 
 export default PostList;
