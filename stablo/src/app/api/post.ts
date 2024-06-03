@@ -1,4 +1,5 @@
 // TODO: Refactor to use only 1 api for both getPostList and getPostListFiltered
+// TODO: Update type for all functions
 export const getPostList = async () => {
   const res = await fetch(`https://kabar-server.onrender.com/posts`, {
     cache: 'no-store',
