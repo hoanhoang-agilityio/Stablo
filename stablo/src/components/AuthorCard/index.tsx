@@ -14,7 +14,7 @@ interface Author {
 
 const AuthorCard = ({ name, avatar, bio, isDetail }: Author) => (
   <div
-    className={`px-8 py-8 mt-3 text-gray-500 rounded-2xl ${!isDetail && 'bg-gray-50'}`}
+    className={`px-8 mt-3 text-gray-500 rounded-2xl ${!isDetail && 'py-8 bg-gray-50'}`}
   >
     <div
       className={twMerge(

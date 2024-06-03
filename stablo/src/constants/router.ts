@@ -5,5 +5,5 @@ export const ROUTER = {
   CATEGORY: '/category',
   CONTACT: '/contact',
   HOME: '/',
-  POST: '/post',
+  POSTS: '/posts',
 };
