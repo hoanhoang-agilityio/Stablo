@@ -2,6 +2,9 @@
 import { getAuthorByName } from '@/app/api/author';
 import { getPostListFiltered } from '@/app/api/post';
 
+// Utils
+import { convertUnderScoreTextToSpace } from '@/utils';
+
 // Components
 import AuthorCard from '@/components/AuthorCard';
 import PostList from '@/components/PostList';
@@ -13,7 +16,7 @@ interface AuthorPageProps {
 }
 
 const Author = async ({ params: { name } }: AuthorPageProps) => {
-  const data = await getAuthorByName(name);
+  const data = await getAuthorByName(convertUnderScoreTextToSpace(name));
 
   const { name: authorName, avatar, bio, id } = data?.[0] || [];
 

@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { ROUTER } from '@/constants';
 
 // Utils
-import { formatToLocalizedDate } from '@/utils';
+import {
+  convertSpaceToUnderScore,
+  convertUnderScoreTextToSpace,
+  formatToLocalizedDate,
+} from '@/utils';
 
 // Components
 import { getAuthorById } from '@/app/api/author';
@@ -21,10 +25,10 @@ interface AuthorPageProps {
 export default async function PostDetail({
   params: { title },
 }: AuthorPageProps) {
-  const post = await getPostDetail(title);
+  const post = await getPostDetail(convertUnderScoreTextToSpace(title));
 
   const {
-    postTitle,
+    title: postTitle,
     image,
     category,
     createdAt,
@@ -49,7 +53,7 @@ export default async function PostDetail({
                   href={`${ROUTER.CATEGORY}/${category}`}
                   className="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600"
                 >
-                  {category}
+                  {category.toLocaleUpperCase()}
                 </Link>
               ))}
             </div>
@@ -60,7 +64,9 @@ export default async function PostDetail({
           <div className="mt-3 flex justify-center space-x-3 text-gray-500 ">
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 flex-shrink-0">
-                <Link href={`${ROUTER.AUTHOR}/${authorName}`}>
+                <Link
+                  href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(authorName)}`}
+                >
                   <Image
                     src={authorImage}
                     alt={authorName}
@@ -72,7 +78,9 @@ export default async function PostDetail({
               </div>
               <div className="">
                 <p className="text-gray-800">
-                  <Link href={`${ROUTER.AUTHOR}/${authorName}`}>
+                  <Link
+                    href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(authorName)}`}
+                  >
                     {authorName}
                   </Link>
                 </p>
