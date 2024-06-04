@@ -26,7 +26,7 @@ const AuthorCard = ({ name, avatar, bio, isDetail }: Author) => (
         `flex ${isDetail ? 'flex-col items-center justify-center' : 'flex-wrap items-start sm:space-x-6 sm:flex-nowrap'}`,
       )}
     >
-      <div className="relative flex-shrink-0 w-24 h-24 mt-1 ">
+      <div className="relative flex-shrink-0 w-24 h-24 mt-1">
         <Image
           src={avatar}
           alt={name}
