@@ -1,12 +1,14 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
+
+// Constants
+import { ROUTER } from '@/constants/router';
 
 // utils
 import { convertSpaceToUnderScore } from '@/utils';
 
-// Constants
-import { ROUTER } from '@/constants/router';
+// Components
+import { LinkButton } from '../common/LinkButton';
 
 interface Author {
   name: string;
@@ -53,12 +55,13 @@ const AuthorCard = ({ name, avatar, bio, isDetail }: Author) => (
         </div>
         {!isDetail && (
           <div className="mt-3">
-            <Link
-              className={'py-2 text-sm text-blue-600 rounded-full'}
+            <LinkButton
               href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(name)}`}
             >
-              View Profile
-            </Link>
+              <p className="py-2 text-sm text-blue-600 rounded-full">
+                View Profile
+              </p>
+            </LinkButton>
           </div>
         )}
       </div>
