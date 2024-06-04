@@ -4,6 +4,10 @@ import Link from 'next/link';
 // Constants
 import { ROUTER } from '@/constants';
 
+// APIs
+import { getAuthorById } from '@/app/api/author';
+import { getPostDetail } from '@/app/api/post';
+
 // Utils
 import {
   convertSpaceToUnderScore,
@@ -12,9 +16,8 @@ import {
 } from '@/utils';
 
 // Components
-import { getAuthorById } from '@/app/api/author';
-import { getPostDetail } from '@/app/api/post';
 import AuthorCard from '@/components/AuthorCard';
+import { LinkButton } from '@/components/common/LinkButton';
 
 interface AuthorPageProps {
   params: {
@@ -151,12 +154,11 @@ export default async function PostDetail({
             </p>
           </div>
           <div className="mb-7 mt-7 flex justify-center">
-            <Link
-              href={ROUTER.HOME}
-              className="bg-brand-secondary/20 rounded-full px-5 py-2 text-sm text-blue-600"
-            >
-              ← View all posts
-            </Link>
+            <LinkButton href={ROUTER.HOME}>
+              <p className="bg-brand-secondary/20 rounded-full px-5 py-2 text-sm text-blue-600">
+                ← View all posts
+              </p>
+            </LinkButton>
           </div>
           <AuthorCard name={name} avatar={avatar} bio={bio} />
         </article>

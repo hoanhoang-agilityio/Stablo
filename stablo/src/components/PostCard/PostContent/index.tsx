@@ -6,6 +6,9 @@ import { ROUTER } from '@/constants';
 // Utils
 import { convertSpaceToUnderScore } from '@/utils';
 
+// Components
+import { LinkButton } from '@/components/common/LinkButton';
+
 interface PostContentProps {
   title: string;
   category: string[];
@@ -15,13 +18,11 @@ const PostContent = ({ title, category }: PostContentProps) => (
   <div>
     <div className="flex gap-3">
       {category.map((item, index) => (
-        <Link
-          className="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600"
-          key={index}
-          href={`${ROUTER.CATEGORY}/${item}`}
-        >
-          {item}
-        </Link>
+        <LinkButton key={index} href={`${ROUTER.CATEGORY}/${item}`}>
+          <p className="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600">
+            {item}
+          </p>
+        </LinkButton>
       ))}
     </div>
     <h2 className="text-lg font-semibold leading-snug tracking-tight mt-2">
