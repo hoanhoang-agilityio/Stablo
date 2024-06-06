@@ -6,12 +6,10 @@ interface LinkButtonProps {
   customClass?: string;
 }
 
-export const LinkButton = ({
-  href,
-  children,
-  customClass,
-}: LinkButtonProps) => (
+const LinkButton = ({ href, children, customClass }: LinkButtonProps) => (
   <Link href={href} className={customClass}>
     {children}
   </Link>
 );
+
+export default LinkButton;

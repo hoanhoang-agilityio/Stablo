@@ -7,7 +7,7 @@ interface ContactForm {
   email: string;
   message: string;
 }
-export const ContactForm = () => {
+const ContactForm = () => {
   const { control } = useForm<ContactForm>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
@@ -76,3 +76,5 @@ export const ContactForm = () => {
     </div>
   );
 };
+
+export default ContactForm;

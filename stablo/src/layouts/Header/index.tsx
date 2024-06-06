@@ -4,13 +4,13 @@ import Image from 'next/image';
 // Constants
 import { ROUTER } from '@/constants/router';
 
-// Components
-import {
-  LinkWithIcon,
-  type LinkWithIconProps,
-} from '@/components/LinkWithIcon';
+// Types
+import { LinkWithIconType } from '@/types';
 
-const NAVIGATION_ITEMS: LinkWithIconProps[] = [
+// Components
+import { LinkWithIcon } from '@/components';
+
+const NAVIGATION_ITEMS: LinkWithIconType[] = [
   {
     url: ROUTER.HOME,
     text: 'Home',
