@@ -5,10 +5,10 @@ import { twMerge } from 'tailwind-merge';
 import { ROUTER } from '@/constants/router';
 
 // utils
-import { convertSpaceToUnderScore } from '@/utils';
+import { convertSpaceToDash } from '@/utils';
 
 // Components
-import { LinkButton } from '../common/LinkButton';
+import { LinkButton } from '../common/';
 
 interface Author {
   name: string;
@@ -55,9 +55,7 @@ const AuthorCard = ({ name, avatar, bio, isDetail }: Author) => (
         </div>
         {!isDetail && (
           <div className="mt-3">
-            <LinkButton
-              href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(name)}`}
-            >
+            <LinkButton href={`${ROUTER.AUTHOR}/${convertSpaceToDash(name)}`}>
               <p className="py-2 text-sm text-blue-600 rounded-full">
                 View Profile
               </p>
