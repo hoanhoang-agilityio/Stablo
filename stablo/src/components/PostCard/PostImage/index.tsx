@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ROUTER } from '@/constants';
 
 // Utils
-import { convertSpaceToUnderScore } from '@/utils';
+import { convertSpaceToDash } from '@/utils';
 
 interface PostImageProps {
   src: string;
@@ -17,7 +17,7 @@ const PostImage = ({ src, alt }: PostImageProps) => (
     <div className=" overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105">
       <Link
         className="relative block aspect-square (max-width: 768px) 30vw, 33vw"
-        href={`${ROUTER.POSTS}/${convertSpaceToUnderScore(alt)}`}
+        href={`${ROUTER.POSTS}/${convertSpaceToDash(alt)}`}
       >
         <Image
           src={src}

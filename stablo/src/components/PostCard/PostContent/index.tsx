@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { ROUTER } from '@/constants';
 
 // Utils
-import { convertSpaceToUnderScore } from '@/utils';
+import { convertSpaceToDash } from '@/utils';
 
 // Components
-import { LinkButton } from '@/components/common/LinkButton';
+import { LinkButton } from '@/components';
 
 interface PostContentProps {
   title: string;
@@ -28,7 +28,7 @@ const PostContent = ({ title, category }: PostContentProps) => (
     <h2 className="text-lg font-semibold leading-snug tracking-tight mt-2">
       <Link
         className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]"
-        href={`${ROUTER.POSTS}/${convertSpaceToUnderScore(title)}`}
+        href={`${ROUTER.POSTS}/${convertSpaceToDash(title)}`}
       >
         {title}
       </Link>

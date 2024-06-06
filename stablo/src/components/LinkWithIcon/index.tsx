@@ -1,22 +1,14 @@
-import type { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Link from 'next/link';
+import { LinkWithIconType } from '@/types';
 
-export type LinkWithIconProps = {
-  url: string;
-  text: string;
-  title?: string;
-  icon?: ReactNode;
-  additionalClass?: string;
-};
-
-export const LinkWithIcon = ({
+const LinkWithIcon = ({
   url,
   text,
   title,
   icon,
   additionalClass = 'px-5 py-2',
-}: LinkWithIconProps) => (
+}: LinkWithIconType) => (
   <Link
     href={url}
     title={title || text}
@@ -29,3 +21,5 @@ export const LinkWithIcon = ({
     {text}
   </Link>
 );
+
+export default LinkWithIcon;
