@@ -2,22 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Constants
-import { ROUTER } from '@/constants';
+import { ENDPOINT, ROUTER } from '@/constants';
 
 // APIs
 import { getAuthorById } from '@/app/api/author';
-import { getPostDetail } from '@/app/api/post';
 
 // Utils
-import {
-  convertSpaceToUnderScore,
-  convertUnderScoreTextToSpace,
-  formatToLocalizedDate,
-} from '@/utils';
+import { convertSpaceToDash, formatToLocalizedDate } from '@/utils';
+
+// Models
+import { Post } from '@/models';
 
 // Components
-import AuthorCard from '@/components/AuthorCard';
-import { LinkButton } from '@/components/common/LinkButton';
+import { AuthorCard, LinkButton } from '@/components';
 
 interface AuthorPageProps {
   params: {
@@ -28,7 +25,9 @@ interface AuthorPageProps {
 export default async function PostDetail({
   params: { title },
 }: AuthorPageProps) {
-  const post = await getPostDetail(convertUnderScoreTextToSpace(title));
+  const response = await fetch(`${ENDPOINT}/api/posts/${title}`);
+
+  const authorResponse = await response.json();
 
   const {
     title: postTitle,
@@ -38,9 +37,9 @@ export default async function PostDetail({
     authorImage,
     authorName,
     authorId,
-  } = post?.[0] || {};
+  } = (authorResponse?.[0] as Post) || {};
 
-  const author = await getAuthorById(authorId);
+  const author = await getAuthorById(authorId || '');
 
   const { name, avatar, bio } = author?.[0] || {};
 
@@ -68,7 +67,7 @@ export default async function PostDetail({
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 flex-shrink-0">
                 <Link
-                  href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(authorName)}`}
+                  href={`${ROUTER.AUTHOR}/${convertSpaceToDash(authorName)}`}
                 >
                   <Image
                     src={authorImage}
@@ -82,7 +81,7 @@ export default async function PostDetail({
               <div className="">
                 <p className="text-gray-800">
                   <Link
-                    href={`${ROUTER.AUTHOR}/${convertSpaceToUnderScore(authorName)}`}
+                    href={`${ROUTER.AUTHOR}/${convertSpaceToDash(authorName)}`}
                   >
                     {authorName}
                   </Link>

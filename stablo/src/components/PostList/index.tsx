@@ -10,10 +10,7 @@ interface PostListProps {
 
 const PostList = ({ postList }: PostListProps) =>
   postList.map(
-    (
-      { image, title, category, authorName, authorImage, createdDay },
-      index,
-    ) => (
+    ({ image, title, category, authorName, authorImage, createdAt }, index) => (
       <PostCard
         key={index}
         image={image}
@@ -21,7 +18,7 @@ const PostList = ({ postList }: PostListProps) =>
         category={category}
         authorName={authorName}
         authorImage={authorImage}
-        createdDay={createdDay}
+        createdAt={createdAt}
       />
     ),
   );

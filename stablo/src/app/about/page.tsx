@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ROUTER } from '@/constants';
 
 // utils
-import { convertSpaceToUnderScore } from '@/utils';
+import { convertSpaceToDash } from '@/utils';
 
 // APIs
 import { getAuthorList } from '../api/author';
@@ -36,7 +36,7 @@ const About = async () => {
               key={id}
               className="relative aspect-square overflow-hidden rounded-md odd:translate-y-10 odd:md:translate-y-16"
             >
-              <Link href={`/author/${convertSpaceToUnderScore(name)}`}>
+              <Link href={`/author/${convertSpaceToDash(name)}`}>
                 <Image
                   src={avatar}
                   alt={name}
