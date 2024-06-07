@@ -18,7 +18,10 @@ const PostContent = ({ title, category }: PostContentProps) => (
   <div>
     <div className="flex gap-3">
       {category.map((item, index) => (
-        <LinkButton key={index} href={`${ROUTER.CATEGORY}/${item}`}>
+        <LinkButton
+          key={index}
+          href={`${ROUTER.CATEGORY}/${convertSpaceToDash(item)}`}
+        >
           <p className="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600">
             {item}
           </p>
