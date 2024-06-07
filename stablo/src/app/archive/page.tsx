@@ -1,5 +1,8 @@
-// APIs
-import { getPostListPagination } from '../api/post';
+// Constants
+import { ENDPOINT } from '@/constants';
+
+// Models
+import { Post } from '@/models';
 
 // Components
 import { PostList, Pagination } from '@/components';
@@ -12,9 +15,18 @@ interface SearchParamsProps {
 }
 
 const Archive = async ({ searchParams }: SearchParamsProps) => {
-  const currentPage = Number(searchParams?.page) || 1;
+  const currentPage = Number(searchParams?.page);
 
-  const { post, totalItem } = (await getPostListPagination(currentPage)) || [];
+  const response = await fetch(`${ENDPOINT}/api/archive?page=${currentPage}`, {
+    cache: 'no-store',
+  });
+
+  interface ResponseData {
+    postList: Post[];
+    totalItem: string;
+  }
+
+  const { postList, totalItem }: ResponseData = (await response.json()) || [];
 
   const totalPage = Math.ceil(Number(totalItem) / 6);
 
@@ -28,7 +40,7 @@ const Archive = async ({ searchParams }: SearchParamsProps) => {
       </div>
 
       <div className="grid gap-10 mt-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
-        <PostList postList={post} />
+        <PostList postList={postList} />
       </div>
       <div className="mt-10 flex items-center justify-center">
         <Pagination totalPages={totalPage} />
