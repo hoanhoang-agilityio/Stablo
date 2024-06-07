@@ -1,8 +1,11 @@
-// APIs
-import { getPostByCategory } from '@/app/api/post';
+// Constants
+import { ENDPOINT } from '@/constants';
+
+// Models
+import { Post } from '@/models';
 
 // Utils
-import { upperCaseFirstLetter } from '@/utils';
+import { convertDashToSpace, upperCaseFirstLetter } from '@/utils';
 
 // Components
 import { PostList } from '@/components';
@@ -14,7 +17,14 @@ interface CategoryPageProps {
 }
 
 const Category = async ({ params: { category } }: CategoryPageProps) => {
-  const postByCategory = await getPostByCategory(category);
+  const response = await fetch(
+    `${ENDPOINT}/api/category?category=${category}`,
+    {
+      cache: 'no-store',
+    },
+  );
+
+  const postByCategory: Post[] = (await response.json()) || [];
 
   const totalPosts =
     postByCategory?.length > 1
@@ -25,7 +35,7 @@ const Category = async ({ params: { category } }: CategoryPageProps) => {
     <main className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-3xl font-semibold tracking-tight lg:leading-tight text-brand-primary lg:text-5xl">
-          {upperCaseFirstLetter(category)}
+          {upperCaseFirstLetter(convertDashToSpace(category))}
         </h1>
         <p className="mt-1 text-gray-600">{totalPosts}</p>
       </div>
