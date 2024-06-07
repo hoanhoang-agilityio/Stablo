@@ -2,8 +2,7 @@
 import { getPostListPagination } from '../api/post';
 
 // Components
-import PostList from '@/components/PostList';
-import Pagination from '@/components/Pagination';
+import { PostList, Pagination } from '@/components';
 
 interface SearchParamsProps {
   searchParams?: {

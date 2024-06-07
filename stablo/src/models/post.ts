@@ -4,5 +4,6 @@ export interface Post {
   category: string[];
   authorName: string;
   authorImage: string;
-  createdDay: string;
+  createdAt: string;
+  authorId?: string;
 }

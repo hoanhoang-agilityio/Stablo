@@ -5,7 +5,7 @@ import { getPostByCategory } from '@/app/api/post';
 import { upperCaseFirstLetter } from '@/utils';
 
 // Components
-import PostList from '@/components/PostList';
+import { PostList } from '@/components';
 
 interface CategoryPageProps {
   params: {

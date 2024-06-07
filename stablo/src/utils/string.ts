@@ -1,11 +1,11 @@
 // Converts spaces to underscores in a given text
-export const convertSpaceToUnderScore = (text = '') => {
-  return text?.replace(/\s/g, '_');
+export const convertSpaceToDash = (text = '') => {
+  return text?.replace(/\s/g, '-');
 };
 
 // Converts underscores to spaces in a given text
-export const convertUnderScoreTextToSpace = (text = '') => {
-  return text?.replace(/_/g, ' ');
+export const convertDashToSpace = (text = '') => {
+  return text?.replace(/-/g, ' ');
 };
 
 // Capitalizes the first letter of a given text

@@ -12,7 +12,7 @@ const PostCard = ({
   category,
   authorName,
   authorImage,
-  createdDay,
+  createdAt,
 }: Post) => (
   <div className="group cursor-pointer">
     <PostImage src={image} alt={title} />
@@ -20,7 +20,7 @@ const PostCard = ({
     <PostAuthor
       authorName={authorName}
       avatar={authorImage}
-      createdDay={createdDay}
+      createdAt={createdAt}
     />
   </div>
 );

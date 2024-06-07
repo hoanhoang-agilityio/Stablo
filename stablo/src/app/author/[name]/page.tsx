@@ -1,13 +1,14 @@
+// Constants
+import { ENDPOINT } from '@/constants';
+
 // APIs
-import { getAuthorByName } from '@/app/api/author';
 import { getPostListFiltered } from '@/app/api/post';
 
-// Utils
-import { convertUnderScoreTextToSpace } from '@/utils';
+// Models
+import { Author as AuthorType } from '@/models';
 
 // Components
-import AuthorCard from '@/components/AuthorCard';
-import PostList from '@/components/PostList';
+import { AuthorCard, PostList } from '@/components';
 
 interface AuthorPageProps {
   params: {
@@ -16,9 +17,15 @@ interface AuthorPageProps {
 }
 
 const Author = async ({ params: { name } }: AuthorPageProps) => {
-  const data = await getAuthorByName(convertUnderScoreTextToSpace(name));
+  const response = await fetch(`${ENDPOINT}/api/author?name=${name}`);
+  const authorResponse = await response.json();
 
-  const { name: authorName, avatar, bio, id } = data?.[0] || [];
+  const {
+    name: authorName,
+    avatar,
+    bio,
+    id,
+  } = (authorResponse?.author?.[0] as AuthorType) || {};
 
   const authorPosts = await getPostListFiltered(id);
 

@@ -1,24 +1,24 @@
 // TODO: Refactor to use only 1 api for both getPostList and getPostListFiltered
 // TODO: Update type for all functions
-export const getPostList = async () => {
-  const res = await fetch(`https://kabar-server.onrender.com/posts`, {
-    cache: 'no-store',
-  });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+// export const getPostList = async () => {
+//   const res = await fetch(`${process.env.API_END_POINT}/posts`, {
+//     cache: 'no-store',
+//   });
+//   // The return value is *not* serialized
+//   // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data');
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
 export const getPostListPagination = async (page?: number) => {
   const url = page
-    ? `https://kabar-server.onrender.com/posts?_page=${page}&_limit=6`
-    : `https://kabar-server.onrender.com/posts`;
+    ? `${process.env.API_END_POINT}/posts?_page=${page}&_limit=6`
+    : `${process.env.API_END_POINT}/posts`;
 
   const res = await fetch(url, {
     cache: 'no-store',
@@ -42,7 +42,7 @@ export const getPostListPagination = async (page?: number) => {
 
 export const getPostListFiltered = async (authorId: string) => {
   const res = await fetch(
-    `https://kabar-server.onrender.com/posts?authorId=${authorId}`,
+    `${process.env.API_END_POINT}/posts?authorId=${authorId}`,
     {
       cache: 'no-store',
     },
@@ -59,10 +59,9 @@ export const getPostListFiltered = async (authorId: string) => {
 };
 
 export const getPostDetail = async (title: string) => {
-  const res = await fetch(
-    `https://kabar-server.onrender.com/posts?title=${title}`,
-    { cache: 'no-store' },
-  );
+  const res = await fetch(`${process.env.API_END_POINT}/posts?title=${title}`, {
+    cache: 'no-store',
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -76,7 +75,7 @@ export const getPostDetail = async (title: string) => {
 
 export const getPostByCategory = async (category: string) => {
   const res = await fetch(
-    `https://kabar-server.onrender.com/posts?category=${category}`,
+    `${process.env.API_END_POINT}/posts?category=${category}`,
     { cache: 'no-store' },
   );
   // The return value is *not* serialized

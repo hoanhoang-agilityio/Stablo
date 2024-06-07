@@ -1,5 +1,7 @@
-import { ContactForm } from '@/components/ContactForm';
 import Image from 'next/image';
+
+// Components
+import { ContactForm } from '@/components';
 
 const Contact = async () => {
   const CONTACT_CONTENTS = [
