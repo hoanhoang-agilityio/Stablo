@@ -17,18 +17,21 @@ interface SearchParamsProps {
 const Archive = async ({ searchParams }: SearchParamsProps) => {
   const currentPage = Number(searchParams?.page);
 
-  const response = await fetch(`${ENDPOINT}/api/archive?page=${currentPage}`, {
+  const url =
+    currentPage > 1
+      ? `${ENDPOINT}/api/archive?page=${currentPage}`
+      : `${ENDPOINT}/api/archive`;
+
+  const response = await fetch(url, {
     cache: 'no-store',
   });
 
   interface ResponseData {
     postList: Post[];
-    totalItem: string;
+    totalPages: string;
   }
 
-  const { postList, totalItem }: ResponseData = (await response.json()) || [];
-
-  const totalPage = Math.ceil(Number(totalItem) / 6);
+  const { postList, totalPages }: ResponseData = (await response.json()) || [];
 
   return (
     <main className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
@@ -43,7 +46,7 @@ const Archive = async ({ searchParams }: SearchParamsProps) => {
         <PostList postList={postList} />
       </div>
       <div className="mt-10 flex items-center justify-center">
-        <Pagination totalPages={totalPage} />
+        <Pagination totalPages={Number(totalPages)} />
       </div>
     </main>
   );
