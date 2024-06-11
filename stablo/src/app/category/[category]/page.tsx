@@ -17,12 +17,9 @@ interface CategoryPageProps {
 }
 
 const Category = async ({ params: { category } }: CategoryPageProps) => {
-  const response = await fetch(
-    `${ENDPOINT}/api/category?category=${category}`,
-    {
-      cache: 'no-store',
-    },
-  );
+  const response = await fetch(`${ENDPOINT}/category?category=${category}`, {
+    cache: 'no-store',
+  });
 
   const postByCategory: Post[] = (await response.json()) || [];
 

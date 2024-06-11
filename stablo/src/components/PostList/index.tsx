@@ -8,7 +8,7 @@ interface PostListProps {
   postList: Post[];
 }
 
-const PostList = ({ postList }: PostListProps) =>
+const PostList = ({ postList = [] }: PostListProps) =>
   postList.map(
     ({ image, title, category, authorName, authorImage, createdAt }, index) => (
       <PostCard

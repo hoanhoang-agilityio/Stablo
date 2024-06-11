@@ -25,7 +25,7 @@ interface AuthorPageProps {
 export default async function PostDetail({
   params: { title },
 }: AuthorPageProps) {
-  const response = await fetch(`${ENDPOINT}/api/posts/${title}`);
+  const response = await fetch(`${ENDPOINT}/posts/${title}`);
 
   const authorResponse = await response.json();
 

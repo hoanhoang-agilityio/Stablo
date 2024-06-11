@@ -1,20 +1,4 @@
-export const getAPIErrorMessage = <T>(
-  promiseFunction: () => Promise<Response>,
-): Promise<T> => {
-  return promiseFunction().then(handleResponse).catch(handleError);
+export const getAPIErrorMessage = (statusCode: number, statusText: string) => {
+  const errorMessage = `An error has occurred: ${statusCode} - ${statusText}`;
+  return errorMessage;
 };
-
-async function handleResponse(response: Response) {
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.message || 'An error occurred');
-  }
-  return response.json();
-}
-
-function handleError(error: Error) {
-  if (error.message === 'Failed to fetch') {
-    throw new Error('Network error. Please try again later.');
-  }
-  throw error;
-}

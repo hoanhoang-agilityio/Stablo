@@ -1,18 +1,15 @@
 // Constants
-import { ENDPOINT, ROUTER } from '@/constants';
+import { ROUTER } from '@/constants';
 
 // Models
 import { Post } from '@/models';
 
 // Components
 import { LinkButton, PostList } from '@/components';
+import { getPostList } from '@/services/post';
 
 const Home = async () => {
-  const response = await fetch(`${ENDPOINT}/api/posts`, {
-    cache: 'no-store',
-  });
-
-  const postListResponse: Post[] = (await response.json()) || [];
+  const postListResponse: Post[] = (await getPostList()) || [];
 
   const renderPostCards = (start: number, end?: number) => (
     <PostList postList={postListResponse.slice(start, end)} />
