@@ -2,13 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Constants
-import { ENDPOINT, ROUTER } from '@/constants';
+import { ROUTER } from '@/constants';
 
 // APIs
 import { getAuthorById } from '@/app/api/author';
 
 // Utils
-import { convertSpaceToDash, formatToLocalizedDate } from '@/utils';
+import {
+  convertDashToSpace,
+  convertSpaceToDash,
+  formatToLocalizedDate,
+} from '@/utils';
 
 // Models
 import { Post } from '@/models';
@@ -25,7 +29,12 @@ interface AuthorPageProps {
 export default async function PostDetail({
   params: { title },
 }: AuthorPageProps) {
-  const response = await fetch(`${ENDPOINT}/posts/${title}`);
+  const response = await fetch(
+    `${process.env.API_END_POINT}/posts?name=${convertDashToSpace(title)}`,
+    {
+      cache: 'no-cache',
+    },
+  );
 
   const authorResponse = await response.json();
 
@@ -37,7 +46,7 @@ export default async function PostDetail({
     authorImage,
     authorName,
     authorId,
-  } = (authorResponse?.[0] as Post) || {};
+  } = (authorResponse[0] as Post) || {};
 
   const author = await getAuthorById(authorId || '');
 
