@@ -4,11 +4,11 @@ import Image from 'next/image';
 // Constants
 import { ROUTER } from '@/constants';
 
+// APIs
+import { getAuthorList } from '@/services/author';
+
 // utils
 import { convertSpaceToDash } from '@/utils';
-
-// APIs
-import { getAuthorList } from '../api/author';
 
 const About = async () => {
   const authorList = (await getAuthorList()) || [];

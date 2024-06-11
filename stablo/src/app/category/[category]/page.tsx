@@ -1,8 +1,5 @@
-// Constants
-import { ENDPOINT } from '@/constants';
-
-// Models
-import { Post } from '@/models';
+// APIs
+import { getPostByCategory } from '@/services/post';
 
 // Utils
 import { convertDashToSpace, upperCaseFirstLetter } from '@/utils';
@@ -17,16 +14,12 @@ interface CategoryPageProps {
 }
 
 const Category = async ({ params: { category } }: CategoryPageProps) => {
-  const response = await fetch(`${ENDPOINT}/category?category=${category}`, {
-    cache: 'no-store',
-  });
-
-  const postByCategory: Post[] = (await response.json()) || [];
+  const postList = await getPostByCategory(convertDashToSpace(category));
 
   const totalPosts =
-    postByCategory?.length > 1
-      ? `${postByCategory?.length} Articles`
-      : `${postByCategory?.length} Article`;
+    postList?.length > 1
+      ? `${postList?.length} Articles`
+      : `${postList?.length} Article`;
 
   return (
     <main className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
@@ -37,7 +30,7 @@ const Category = async ({ params: { category } }: CategoryPageProps) => {
         <p className="mt-1 text-gray-600">{totalPosts}</p>
       </div>
       <div className="grid gap-10 mt-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
-        <PostList postList={postByCategory} />
+        <PostList postList={postList} />
       </div>
     </main>
   );

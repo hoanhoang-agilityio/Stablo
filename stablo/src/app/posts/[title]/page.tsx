@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { ROUTER } from '@/constants';
 
 // APIs
-import { getAuthorById } from '@/app/api/author';
+import { getAuthorById } from '@/services/author';
+import { getPostDetail } from '@/services/post';
 
 // Utils
 import {
@@ -29,14 +30,7 @@ interface AuthorPageProps {
 export default async function PostDetail({
   params: { title },
 }: AuthorPageProps) {
-  const response = await fetch(
-    `${process.env.API_END_POINT}/posts?name=${convertDashToSpace(title)}`,
-    {
-      cache: 'no-cache',
-    },
-  );
-
-  const authorResponse = await response.json();
+  const postDetail = await getPostDetail(convertDashToSpace(title));
 
   const {
     title: postTitle,
@@ -46,7 +40,7 @@ export default async function PostDetail({
     authorImage,
     authorName,
     authorId,
-  } = (authorResponse[0] as Post) || {};
+  } = (postDetail[0] as Post) || {};
 
   const author = await getAuthorById(authorId || '');
 

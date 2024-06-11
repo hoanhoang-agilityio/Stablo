@@ -1,13 +1,10 @@
 'use server';
 
-// Constants
-import { ENDPOINT } from '@/constants';
-
 // Utils
 import { getAPIErrorMessage } from '@/utils';
 
 export const getPostList = async () => {
-  const res = await fetch(`${ENDPOINT}/posts`, {
+  const res = await fetch(`${process.env.API_END_POINT}/posts`, {
     cache: 'no-store',
   });
 
@@ -38,6 +35,31 @@ export const getPostListByAuthorId = async (authorId: string) => {
       cache: 'no-store',
     },
   );
+
+  if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
+
+  return res.json();
+};
+
+export const getPostDetail = async (title: string) => {
+  const res = await fetch(`${process.env.API_END_POINT}/posts?title=${title}`, {
+    cache: 'no-store',
+  });
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
+
+  return res.json();
+};
+
+export const getPostByCategory = async (category: string) => {
+  const res = await fetch(
+    `${process.env.API_END_POINT}/posts?category=${category}`,
+    { cache: 'no-store' },
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
 
   if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
 
