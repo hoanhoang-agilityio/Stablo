@@ -1,6 +1,3 @@
-// Models
-import { Post } from '@/models';
-
 // Components
 import { PostList, Pagination } from '@/components';
 import { getPostListPagination } from '@/services/post';
@@ -12,18 +9,12 @@ interface SearchParamsProps {
   };
 }
 
-interface ResponseData {
-  postList: Post[];
-  totalItems: string;
-}
-
 const Archive = async ({ searchParams }: SearchParamsProps) => {
-  const currentPage = Number(searchParams?.page);
+  const currentPage = Number(searchParams?.page) || 1;
 
-  const postListResponse: ResponseData =
-    await getPostListPagination(currentPage);
+  const postListResponse = (await getPostListPagination(currentPage)) || [];
 
-  const { postList, totalItems } = postListResponse || [];
+  const { postList, totalItems } = postListResponse || {};
 
   const totalPages = Number(totalItems) / 6;
 
