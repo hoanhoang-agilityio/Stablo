@@ -17,10 +17,7 @@ export const getPostList = async () => {
 };
 
 export const getPostListPagination = async (currentPage: number) => {
-  const url =
-    currentPage > 1
-      ? `${ENDPOINT}/archive?page=${currentPage}`
-      : `${ENDPOINT}/archive`;
+  const url = `${process.env.API_END_POINT}/posts?page=${currentPage}&_limit=6`;
 
   const res = await fetch(url, {
     cache: 'no-store',
@@ -28,7 +25,10 @@ export const getPostListPagination = async (currentPage: number) => {
 
   if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
 
-  return res.json();
+  const postList = await res.json();
+  const totalItems = Number(res.headers.get('X-Total-Count'));
+
+  return { postList, totalItems };
 };
 
 export const getPostListByAuthorId = async (authorId: string) => {
