@@ -13,12 +13,12 @@ import { AuthorCard, PostList } from '@/components';
 
 interface AuthorPageProps {
   params: {
-    name: string;
+    slug: string;
   };
 }
 
-const Author = async ({ params: { name } }: AuthorPageProps) => {
-  const author = await getAuthorByName(convertDashToSpace(name));
+const Author = async ({ params: { slug } }: AuthorPageProps) => {
+  const author = await getAuthorByName(convertDashToSpace(slug));
 
   const {
     name: authorName,

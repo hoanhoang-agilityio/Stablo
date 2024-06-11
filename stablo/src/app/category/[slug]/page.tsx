@@ -9,12 +9,12 @@ import { PostList } from '@/components';
 
 interface CategoryPageProps {
   params: {
-    category: string;
+    slug: string;
   };
 }
 
-const Category = async ({ params: { category } }: CategoryPageProps) => {
-  const postList = await getPostByCategory(convertDashToSpace(category));
+const Category = async ({ params: { slug } }: CategoryPageProps) => {
+  const postList = await getPostByCategory(convertDashToSpace(slug));
 
   const totalPosts =
     postList?.length > 1
@@ -25,7 +25,7 @@ const Category = async ({ params: { category } }: CategoryPageProps) => {
     <main className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-3xl font-semibold tracking-tight lg:leading-tight text-brand-primary lg:text-5xl">
-          {upperCaseFirstLetter(convertDashToSpace(category))}
+          {upperCaseFirstLetter(convertDashToSpace(slug))}
         </h1>
         <p className="mt-1 text-gray-600">{totalPosts}</p>
       </div>

@@ -23,14 +23,14 @@ import { AuthorCard, LinkButton } from '@/components';
 
 interface AuthorPageProps {
   params: {
-    title: string;
+    slug: string;
   };
 }
 
 export default async function PostDetail({
-  params: { title },
+  params: { slug },
 }: AuthorPageProps) {
-  const postDetail = await getPostDetail(convertDashToSpace(title));
+  const postDetail = await getPostDetail(convertDashToSpace(slug));
 
   const {
     title: postTitle,
