@@ -1,11 +1,12 @@
-// Constants
-import { ENDPOINT } from '@/constants';
-
 // APIs
 import { getPostListByAuthorId } from '@/services/post';
+import { getAuthorByName } from '@/services/author';
 
 // Models
 import { Author as AuthorType } from '@/models';
+
+// Utils
+import { convertDashToSpace } from '@/utils';
 
 // Components
 import { AuthorCard, PostList } from '@/components';
@@ -17,16 +18,14 @@ interface AuthorPageProps {
 }
 
 const Author = async ({ params: { name } }: AuthorPageProps) => {
-  const response = await fetch(`${ENDPOINT}/author?name=${name}`);
-  const authorResponse = await response.json();
+  const author = await getAuthorByName(convertDashToSpace(name));
 
-  // TODO: Check data response from API
   const {
     name: authorName,
     avatar,
     bio,
     id,
-  } = (authorResponse?.[0] as AuthorType) || {};
+  } = (author?.[0] as AuthorType) || {};
 
   const authorPosts = (await getPostListByAuthorId(id)) || [];
 

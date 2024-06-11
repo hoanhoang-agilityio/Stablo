@@ -1,5 +1,8 @@
-// TODO: Refactor to use only 1 api for both getAuthorById and getAuthorByName
-// TODO: Update type for all functions
+'use server';
+
+// Utils
+import { getAPIErrorMessage } from '@/utils';
+
 export const getAuthorById = async (id: string) => {
   const res = await fetch(`${process.env.API_END_POINT}/author?id=${id}`, {
     cache: 'no-store',
@@ -7,10 +10,7 @@ export const getAuthorById = async (id: string) => {
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
+  if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
 
   return res.json();
 };
@@ -22,10 +22,7 @@ export const getAuthorByName = async (name: string) => {
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
+  if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
 
   return res.json();
 };
@@ -37,10 +34,7 @@ export const getAuthorList = async () => {
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
+  if (!res.ok) throw new Error(getAPIErrorMessage(res.status, res.statusText));
 
   return res.json();
 };
