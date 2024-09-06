@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Script
+        id="holar"
         dangerouslySetInnerHTML={{
           __html: `
           (function(h,o,t,j,a,r){
